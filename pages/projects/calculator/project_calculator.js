@@ -2,13 +2,15 @@
  * Split 10 buttons
  * Calculate button (+, -, *, /)
  * Equals button
+ * TODO: Max digits => 15
  */
 
  //string then convert to number
  let firstNumber = '';
  let secondNumber = '';
- let numberArray = [...Array(10).keys()]; //Spread operator for [0,1,2,3,4,5,6,7,8,9]
- let symbolArray = ["+", "-", "*", "/"];
+ //let numberArray = [...Array(10).keys()]; //Spread operator for [0,1,2,3,4,5,6,7,8,9]
+ let numberArray = [0,3,2,1,6,5,4,9,8,7]
+ let symbolArray = ["/", "*", "-", "+"];
  var firstSet = false; //If the first number is already defined
  var secondSet = false;
  var symbolClicked = false;
@@ -17,9 +19,11 @@
 
  //Set numbers
  function setNumpad() {
-     for (let i = 0; i < numberArray.length; i++) {
+     for (let i = numberArray.length-1; i >= 0; i--) {
          document.getElementById("numpad").innerHTML += "<button onClick = " + 'clickNum(' + numberArray[i] + ')' + ">" + numberArray[i] + "</button>";
      }
+     document.getElementById("numpad").innerHTML += "<button>.</button>";
+     document.getElementById("numpad").innerHTML += "<button onClick = " + 'calculate()' + ">=</button>";
  }
 
  //Set calculator buttons
@@ -70,25 +74,30 @@
  }
 
 
-document.getElementById("calculate").onclick = calculate;
+// document.getElementById("calculate").onclick = calculate;
 
 function calculate(){
+
+    let output = 0;
+
     if (firstSet && secondSet){
 
         switch (currentSymbol) {
             case '+':
-                document.getElementById("calc_output").innerHTML = parseFloat(firstNumber) + parseFloat(secondNumber);
+                output = parseFloat(firstNumber) + parseFloat(secondNumber);
                 break;
             case '-':
-                document.getElementById("calc_output").innerHTML = parseFloat(firstNumber) - parseFloat(secondNumber);
+                output = parseFloat(firstNumber) - parseFloat(secondNumber);
                 break;
             case '*':
-                document.getElementById("calc_output").innerHTML = parseFloat(firstNumber) * parseFloat(secondNumber);
+                output = parseFloat(firstNumber) * parseFloat(secondNumber);
                 break;
             case '/':
-                document.getElementById("calc_output").innerHTML = parseFloat(firstNumber) / parseFloat(secondNumber);
+                output = parseFloat(firstNumber) / parseFloat(secondNumber);
                 break;
         }
+
+        document.getElementById("calc_output").innerHTML = output;
 
         document.getElementById("calc_string").innerHTML = calculationString + secondNumber + " = ";
 
