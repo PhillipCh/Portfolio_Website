@@ -77,16 +77,16 @@ function calculate(){
 
         switch (currentSymbol) {
             case '+':
-                document.getElementById("calc_output").innerHTML = firstNumber + secondNumber;
+                document.getElementById("calc_output").innerHTML = parseFloat(firstNumber) + parseFloat(secondNumber);
                 break;
             case '-':
-                document.getElementById("calc_output").innerHTML = firstNumber - secondNumber;
+                document.getElementById("calc_output").innerHTML = parseFloat(firstNumber) - parseFloat(secondNumber);
                 break;
             case '*':
-                document.getElementById("calc_output").innerHTML = firstNumber * secondNumber;
+                document.getElementById("calc_output").innerHTML = parseFloat(firstNumber) * parseFloat(secondNumber);
                 break;
             case '/':
-                document.getElementById("calc_output").innerHTML = firstNumber / secondNumber;
+                document.getElementById("calc_output").innerHTML = parseFloat(firstNumber) / parseFloat(secondNumber);
                 break;
         }
 
