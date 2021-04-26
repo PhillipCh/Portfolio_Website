@@ -123,6 +123,8 @@ function cancelButton(){
     symbolClicked = false;
 }
 
+
+
  setNumpad();
  setSymbols();
 
