@@ -73,3 +73,8 @@ button{
     /*padding: 20px;*/
     grid-row-gap: 10px;
 }
+
+#cancelButton {
+    align-self: flex-end;
+    margin-right: 30px;
+}

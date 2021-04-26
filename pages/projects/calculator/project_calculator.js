@@ -1,8 +1,10 @@
 /**
- * Split 10 buttons
- * Calculate button (+, -, *, /)
- * Equals button
+ * Split 10 buttons - Done
+ * Calculate button (+, -, *, /) - Done
+ * Equals button - Done
  * TODO: Max digits => 15
+ * TODO: Customising the buttons
+ * TODO: More than 2 digits per calculation (If second digit populated and symbol pressed then second digit = first digit)
  */
 
  //string then convert to number
@@ -61,6 +63,8 @@
 
      } else {
 
+        //If second number already populated, then add on.
+
          if (secondSet) {
              secondNumber = String(secondNumber) + String(number);
              document.getElementById("calc_output").innerHTML = String(secondNumber);
@@ -109,6 +113,15 @@ function calculate(){
     symbolClicked = false;
 }
 
+function cancelButton(){
+    document.getElementById("calc_output").innerHTML = "0";
+    document.getElementById("calc_string").innerHTML = "Calculation shown here";
+    firstNumber = '';
+    secondNumber = '';
+    firstSet = false;
+    secondSet = false;
+    symbolClicked = false;
+}
 
  setNumpad();
  setSymbols();
