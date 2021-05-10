@@ -24,7 +24,7 @@
      for (let i = numberArray.length-1; i >= 0; i--) {
          document.getElementById("numpad").innerHTML += "<button onClick = " + 'clickNum(' + numberArray[i] + ')' + ">" + numberArray[i] + "</button>";
      }
-     document.getElementById("numpad").innerHTML += "<button>.</button>";
+     document.getElementById("numpad").innerHTML += "<button onClick = " + 'decimal()' + ">.</button>";
      document.getElementById("numpad").innerHTML += "<button onClick = " + 'calculate()' + ">=</button>";
  }
 
@@ -53,11 +53,11 @@
 
          if (firstSet) {
              firstNumber = String(firstNumber) + String(number);
-             document.getElementById("calc_output").innerHTML = String(firstNumber);
+             document.getElementById("calc_output").innerHTML = firstNumber;
 
          } else {
-             firstNumber = number;
-             document.getElementById("calc_output").innerHTML = String(firstNumber);
+             firstNumber = String(number);
+             document.getElementById("calc_output").innerHTML = firstNumber;
              firstSet = true;
          }
 
@@ -67,10 +67,10 @@
 
          if (secondSet) {
              secondNumber = String(secondNumber) + String(number);
-             document.getElementById("calc_output").innerHTML = String(secondNumber);
+             document.getElementById("calc_output").innerHTML = secondNumber;
          } else {
-             secondNumber = number;
-             document.getElementById("calc_output").innerHTML = String(secondNumber);
+             secondNumber = String(number);
+             document.getElementById("calc_output").innerHTML = secondNumber;
              secondSet = true;
          }
      }
@@ -78,7 +78,29 @@
  }
 
 
-// document.getElementById("calculate").onclick = calculate;
+function decimal(){
+
+    //If second number exists, insert decimal into second number
+    if(secondSet) {
+
+        if(String(secondNumber).includes(".")){
+            //skip
+        } else {
+            secondNumber = String(secondNumber) + ".";
+        }
+
+    } else {
+
+        if(String(firstNumber).includes(".")){
+            //skip
+        } else {
+            firstNumber = String(firstNumber) + ".";
+        }
+
+    }
+
+}
+
 
 function calculate(){
 
@@ -128,4 +150,3 @@ function cancelButton(){
  setNumpad();
  setSymbols();
 
- //If calculate button was pressed then let first number = pressed number
