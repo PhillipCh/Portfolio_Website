@@ -98,3 +98,15 @@ footer .icons {
 footer a {
     width: 30%;
 }
+
+.container p {
+    color: white;
+}
+
+.container a {
+    color: white;
+}
+
+.container h2 {
+    color: white;
+}
